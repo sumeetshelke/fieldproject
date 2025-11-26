@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Wastage Awareness | Soybean Example</title>
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ----------------- GLOBAL ----------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: #f7f7f7;
+            color: #222;
+        }
+
+        /* ----------------- NAVBAR ----------------- */
+        nav {
+            background: #2b9348;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ----------------- HEADER ----------------- */
+        header {
+            background: url('https://images.unsplash.com/photo-1524594081293-190a2fe0baae') no-repeat center/cover;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            background: rgba(0,0,0,0.5);
+            padding: 12px 24px;
+            border-radius: 10px;
+        }
+
+        /* ----------------- SECTION ----------------- */
+        section {
+            padding: 40px 8%;
+        }
+        h2 {
+            color: #2b9348;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* ----------------- FLEX CONTENT ----------------- */
+        .flex-box {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 12px #ddd;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .flex-box img {
+            width: 19%;
+            border-radius: 10px;
+        }
+
+        .text-area {
+            width: 65%;
+        }
+
+        .text-area h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .text-area p {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .text-area b{ font-weight: bolder;
+                     font-size: 34px;
+                     align-items: center; }
+
+        /* ----------------- FOOTER ----------------- */
+        footer {
+            background: #2b9348;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* ----------------- MEDIA QUERIES ----------------- */
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            nav { flex-direction: column; }
+
+            header h1 { font-size: 28px; }
+
+            .flex-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            .flex-box img {
+                width: 80%;
+                margin: auto;
+            }
+            .text-area {
+                width: 100%;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            header {
+                height: 220px;
+            }
+            header h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 26px;
+            }
+            .flex-box img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Food Wastage Awareness</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#soybean">Soybean Example</a></li>
+            <li><a href="#prevention">Prevention</a></li>
+        </ul>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Stop Food Wastage • Save Food, Save Future</h1>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>What is Food Wastage?</h2>
+
+        <div class="flex-box">
+            
+            <div class="text-area">
+                <h3><b>Understanding Food Wastage</b></h3>
+                <p>
+                    Food wastage means throwing away edible food that could be consumed.  
+                    Farmers work very hard to grow crops — such as the soybean plant — 
+                    yet a huge amount of food never reaches our plates.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="gallery">
+
+        <div class="card">
+            <img src="field project\20250929_1520_Tractor Ploughing Farmland_simple_compose_01k6ae0gvvev4r796b50qhmwm2 (1).png">
+            <p class="caption">Land preparation with ploughing & soil leveling.</p>
+        </div>
+
+        <div class="card">
+            <img src="field project\20250929_1524_Sowing Soybean Seeds_simple_compose_01k6ae7azye6atw1fdba96r389.png">
+            <p class="caption">Sowing high-quality soybean seeds.</p>
+        </div>
+
+        <div class="card">
+            <img src="field project\20250929_1526_Sprouting Soybean Seedlings_simple_compose_01k6aeca9zechtnvb1vqw0q6kr.png">
+            <p class="caption">Germination and appearance of seedlings.</p>
+        </div>
+
+        <div class="card">
+            <img src="field project\20250929_1529_Lush Soybean Field_simple_compose_01k6aek44ze7ztjqqztgkv2cgr.png">
+            <p class="caption">Vegetative growth with healthy leaves.</p>
+        </div>
+
+        <div class="card">
+            <img src="field project\20250929_1539_Soybean Blossoms Close-Up_simple_compose_01k6af2dcxfnqaxw1zd5mcyz72.png">
+            <p class="caption">Flowering and pod formation stage.</p>
+        </div>
+
+        <div class="card">
+            <img src="field project\20250929_1544_Ripening Soybean Harvest_simple_compose_01k6afd1r4ey89n19ar79jnztr.png">
+            <p class="caption">Mature soybean pods turning yellow.</p>
+        </div>
+
+        <div class="card">
+            <img src="field project\20250929_1548_Soybean Harvest Scene_simple_compose_01k6afmn7hev9vmyadr70jtq38.png">
+            <p class="caption">Harvesting dry and brown soybean pods.</p>
+        </div>
+
+        <div class="card">
+            <img src="field project\20250929_1557_Indian Soybean Harvesting_simple_compose_01k6ag4d0xf0caav92zjec8qfe (1).png">
+            <p class="caption">Post-harvest cleaning and processing.</p>
+        </div>
+
+    </div>
+</section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        © 2025 Food Wastage Awareness | Designed by Sumeet
+    </footer>
+
+</body>
+</html>

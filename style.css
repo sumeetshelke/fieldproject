@@ -1,0 +1,28 @@
+/* ----- GALLERY (Matches Screenshot Style) ----- */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    padding: 12px;
+    border-radius: 15px;
+    width: 280px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 500;
+}
