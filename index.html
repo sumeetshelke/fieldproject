@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 
 
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -49,6 +48,15 @@
             text-decoration: none;
             font-weight: 600;
         }
+        
+        /* Interactive Nav Link State */
+        nav ul li a:hover,
+        nav ul li a.active {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 5px;
+        }
+
 
         /* ----------------- HEADER ----------------- */
         header {
@@ -97,7 +105,7 @@
         }
 
         .text-area {
-            width: 65%;
+            width: 100%;
         }
 
         .text-area h3 {
@@ -110,10 +118,176 @@
             font-size: 16px;
             font-weight: 400;
         }
+        
+        .text-area ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding-bottom: 15px;
+        }
+        
+        /* --- ACCORDION STYLES (NEW) --- */
+        .solution-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            background-color: #ffffff;
+            transition: box-shadow 0.3s;
+        }
 
-        .text-area b{ font-weight: bolder;
-                     font-size: 34px;
-                     align-items: center; }
+        .solution-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 100, 0, 0.1);
+        }
+
+        .solution-header {
+            background-color: #f1f7f1; /* Light green background */
+            padding: 15px 20px;
+            margin: 0;
+            cursor: pointer;
+            font-size: 20px;
+            color: #2b9348;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .solution-header::after {
+            content: '+'; /* Plus sign for closed state */
+            font-size: 24px;
+            font-weight: 700;
+            transition: transform 0.3s;
+        }
+
+        .solution-header.active::after {
+            content: '-'; /* Minus sign for open state */
+        }
+
+        .solution-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+
+        .solution-content.show {
+            max-height: 500px; /* Large enough value to contain content */
+            padding: 15px 20px;
+        }
+        /* --- END ACCORDION STYLES --- */
+
+        .text-area b{ 
+            font-weight: bolder;
+            font-size: 34px;
+            align-items: center; 
+        }
+
+        /* ----- GALLERY (Matches Screenshot Style) ----- */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 12px;
+            border-radius: 15px;
+            width: 280px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+            text-align: center;
+            cursor: pointer; 
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .caption {
+            margin-top: 10px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        /* ----------------- MODAL STYLES (UPDATED for detailed content) ----------------- */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top, higher than navbar */
+            padding-top: 60px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Black fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        /* Modal Content (Container for Text & Gallery) */
+        .modal-content {
+            margin: 60px auto;
+            display: block;
+            width: 90%;
+            max-width: 900px; /* Increased max-width for more detail */
+            background: white; 
+            padding: 30px;
+            border-radius: 10px;
+            color: #222; /* Ensure text is dark inside modal */
+        }
+        
+        .modal-content h3 {
+            color: #2b9348;
+            margin-bottom: 15px;
+        }
+
+        /* New CSS for multiple images in modal */
+        .modal-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            justify-content: center;
+        }
+
+        .modal-gallery img {
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+
+        /* The Close Button */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* ----------------- END MODAL STYLES ----------------- */
+
 
         /* ----------------- FOOTER ----------------- */
         footer {
@@ -145,6 +319,10 @@
             .text-area {
                 width: 100%;
             }
+            .modal-content {
+                padding: 15px;
+                margin: 30px auto;
+            }
         }
 
         /* Mobile */
@@ -167,7 +345,6 @@
 
 <body>
 
-    <!-- NAVBAR -->
     <nav>
         <div class="logo">Food Wastage Awareness</div>
         <ul>
@@ -177,12 +354,10 @@
         </ul>
     </nav>
 
-    <!-- HEADER -->
     <header>
         <h1>Stop Food Wastage • Save Food, Save Future</h1>
     </header>
 
-    <!-- ABOUT -->
     <section id="about">
         <h2>What is Food Wastage?</h2>
 
@@ -191,7 +366,7 @@
             <div class="text-area">
                 <h3><b>Understanding Food Wastage</b></h3>
                 <p>
-                    Food wastage means throwing away edible food that could be consumed.  
+                    Food wastage means throwing away edible food that could be consumed.  
                     Farmers work very hard to grow crops — such as the soybean plant — 
                     yet a huge amount of food never reaches our plates.
                 </p>
@@ -199,56 +374,248 @@
         </div>
     </section>
 
-    <div class="gallery">
+    <section id="soybean"> 
+        <h2>Soybean Life Cycle: Hard Work Lost</h2>
+        <p>Click on any stage below to see detailed examples of where wastage occurs and how it impacts the final yield.</p>
+        <div class="gallery">
 
-        <div class="card">
-            <img src="field project\20250929_1520_Tractor Ploughing Farmland_simple_compose_01k6ae0gvvev4r796b50qhmwm2 (1).png">
-            <p class="caption">Land preparation with ploughing & soil leveling.</p>
+            <div class="card" data-stage="land-prep">
+                <img src="field project\20250929_1520_Tractor Ploughing Farmland_simple_compose_01k6ae0gvvev4r796b50qhmwm2 (1).png">
+                <p class="caption">Land preparation with ploughing & soil leveling.</p>
+            </div>
+
+            <div class="card" data-stage="sowing">
+                <img src="field project\20250929_1524_Sowing Soybean Seeds_simple_compose_01k6ae7azye6atw1fdba96r389.png">
+                <p class="caption">Sowing high-quality soybean seeds.</p>
+            </div>
+
+            <div class="card" data-stage="sprouting">
+                <img src="field project\20250929_1526_Sprouting Soybean Seedlings_simple_compose_01k6aeca9zechtnvb1vqw0q6kr.png">
+                <p class="caption">Germination and appearance of seedlings.</p>
+            </div>
+
+            <div class="card" data-stage="veg-growth">
+                <img src="field project\20250929_1529_Lush Soybean Field_simple_compose_01k6aek44ze7ztjqqztgkv2cgr.png">
+                <p class="caption">Vegetative growth with healthy leaves.</p>
+            </div>
+
+            <div class="card" data-stage="flowering">
+                <img src="field project\20250929_1539_Soybean Blossoms Close-Up_simple_compose_01k6af2dcxfnqaxw1zd5mcyz72.png">
+                <p class="caption">Flowering and pod formation stage.</p>
+            </div>
+
+            <div class="card" data-stage="ripening">
+                <img src="field project\20250929_1544_Ripening Soybean Harvest_simple_compose_01k6afd1r4ey89n19ar79jnztr.png">
+                <p class="caption">Mature soybean pods turning yellow.</p>
+            </div>
+
+            <div class="card" data-stage="harvest">
+                <img src="field project\20250929_1548_Soybean Harvest Scene_simple_compose_01k6afmn7hev9vmyadr70jtq38.png">
+                <p class="caption">Harvesting dry and brown soybean pods.</p>
+            </div>
+
+            <div class="card" data-stage="post-harvest">
+                <img src="field project\20250929_1557_Indian Soybean Harvesting_simple_compose_01k6ag4d0xf0caav92zjec8qfe (1).png">
+                <p class="caption">Post-harvest cleaning and processing.</p>
+            </div>
+
         </div>
+    </section>
+    
+    <section id="prevention">
+        <h2>Prevention and Solutions</h2>
+        <p>A multi-pronged approach across the entire supply chain is necessary. Click on a category below to explore advanced solutions.</p>
+        
+        <div class="flex-box">
+            <div class="text-area">
+                
+                <div class="solution-item">
+                    <h3 class="solution-header">1. 🔬 Technological Interventions (Farm to Processor)</h3>
+                    <div class="solution-content">
+                        <p>Moving beyond simple harvesting, technology is crucial for preventing losses at the source.</p>
+                        <ul>
+                            <li>**Precision Agriculture & IoT (Internet of Things):** Utilizing **soil sensors, drones, and satellite imagery** to monitor crop health in real-time. This reduces resource waste and maximizes viable harvest yield. 
 
-        <div class="card">
-            <img src="field project\20250929_1524_Sowing Soybean Seeds_simple_compose_01k6ae7azye6atw1fdba96r389.png">
-            <p class="caption">Sowing high-quality soybean seeds.</p>
+[Image of a smart farm monitoring system]
+</li>
+                            <li>**Advanced Cold Chain Management:** Implementing **smart labels** or **time-temperature indicators (TTI)** on fresh produce containers. These provide a more accurate measure of true remaining shelf life, drastically reducing spoilage during transport.</li>
+                            <li>**AI-Driven Grading and Sorting:** In processing plants, **AI-powered optical sorters** use high-speed cameras to grade and rapidly divert imperfect but safe food to secondary markets (juices, purees).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solution-item">
+                    <h3 class="solution-header">2. 🏛️ Policy & Regulatory Frameworks (Retail & Industry)</h3>
+                    <div class="solution-content">
+                        <p>Systemic change requires clear policies that incentivize waste reduction and simplify donation.</p>
+                        <ul>
+                            <li>**Liability Protection for Food Donation:** Promoting the use of **Good Samaritan laws** that protect businesses from legal liability when donating food in good faith.</li>
+                            <li>**Mandatory Organic Waste Diversion:** Implementing policies that mandate large food generators separate their organic waste. This forces a focus on higher-value uses like **anaerobic digestion** (creating biogas) or high-quality composting.</li>
+                            <li>**Standardized Date Labeling:** Pushing for government standardization to clarify terminology (e.g., only "Use By" for safety and "Best Before" for quality) to prevent consumer confusion.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="solution-item">
+                    <h3 class="solution-header">3. ♻️ Circular Economy Models (Waste Utilization)</h3>
+                    <div class="solution-content">
+                        <p>Shifting the perspective from "waste" to a "valuable resource" through innovative reprocessing.</p>
+                        <ul>
+                            <li>**Valorization of Byproducts:** Extracting high-value compounds from food processing waste, such as using soybean hulls to create **biodegradable packaging** or enhanced dietary fiber supplements.</li>
+                            <li>**Upcycled Food Movement:** Supporting companies that formally certify and market products made from ingredients that would have otherwise been wasted.</li>
+                            <li>**Centralized Waste-to-Energy (Biogas):** Establishing large-scale facilities where unavoidable food waste is processed through **anaerobic digestion**. This converts the organic matter into **biogas** (renewable natural gas), closing the energy loop. 
+
+[Image of an anaerobic digestion plant schematic]
+</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="card">
-            <img src="field project\20250929_1526_Sprouting Soybean Seedlings_simple_compose_01k6aeca9zechtnvb1vqw0q6kr.png">
-            <p class="caption">Germination and appearance of seedlings.</p>
-        </div>
-
-        <div class="card">
-            <img src="field project\20250929_1529_Lush Soybean Field_simple_compose_01k6aek44ze7ztjqqztgkv2cgr.png">
-            <p class="caption">Vegetative growth with healthy leaves.</p>
-        </div>
-
-        <div class="card">
-            <img src="field project\20250929_1539_Soybean Blossoms Close-Up_simple_compose_01k6af2dcxfnqaxw1zd5mcyz72.png">
-            <p class="caption">Flowering and pod formation stage.</p>
-        </div>
-
-        <div class="card">
-            <img src="field project\20250929_1544_Ripening Soybean Harvest_simple_compose_01k6afd1r4ey89n19ar79jnztr.png">
-            <p class="caption">Mature soybean pods turning yellow.</p>
-        </div>
-
-        <div class="card">
-            <img src="field project\20250929_1548_Soybean Harvest Scene_simple_compose_01k6afmn7hev9vmyadr70jtq38.png">
-            <p class="caption">Harvesting dry and brown soybean pods.</p>
-        </div>
-
-        <div class="card">
-            <img src="field project\20250929_1557_Indian Soybean Harvesting_simple_compose_01k6ag4d0xf0caav92zjec8qfe (1).png">
-            <p class="caption">Post-harvest cleaning and processing.</p>
-        </div>
-
+    </section>
+    <div id="imageModal" class="modal">
+        <span class="close-btn">&times;</span>
+        <div id="modalContentArea" class="modal-content">
+            </div>
     </div>
-</section>
-
-
-    <!-- FOOTER -->
     <footer>
         © 2025 Food Wastage Awareness | Designed by Sumeet
     </footer>
 
-</body>
+    <script>
+        // --- ACCORDION TOGGLE LOGIC (NEW) ---
+        const solutionHeaders = document.querySelectorAll('.solution-header');
+
+        solutionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                
+                // Close other open panels (optional, but good for cleanliness)
+                solutionHeaders.forEach(otherHeader => {
+                    if (otherHeader !== header && otherHeader.classList.contains('active')) {
+                        otherHeader.classList.remove('active');
+                        otherHeader.nextElementSibling.classList.remove('show');
+                    }
+                });
+
+                // Toggle the clicked panel
+                header.classList.toggle('active');
+                content.classList.toggle('show');
+            });
+        });
+
+        // ----------------- STAGE DETAILS OBJECT -----------------
+        const stageDetails = {
+            "land-prep": {
+                title: "Land Preparation Details: Soil Health & Resources",
+                description: "Wastage starts here if resources like fertilizer or water are misapplied. Beyond just ploughing, this stage involves soil testing and adding organic matter to ensure optimal growing conditions. Improper preparation leads to low yields and wasted seed.",
+                extra_images: [
+                    "field project/extra/land_prep_soil.png", 
+                    "field project/extra/land_prep_plough.png"
+                ]
+            },
+            "sowing": {
+                title: "Sowing Details: Seed Quality and Depth",
+                description: "The quality of the seed (certified disease-free) and the precise depth of sowing are crucial. Inconsistent sowing depth means some seeds won't germinate or will die early, which is a major source of early-stage wastage.",
+                extra_images: [
+                    "field project/extra/sowing_depth.png"
+                ]
+            },
+            "sprouting": {
+                title: "Sprouting & Early Growth: Pest and Disease Management",
+                description: "Early infestation by pests or disease can wipe out an entire crop section. Careful monitoring and targeted treatment (instead of blanket pesticide use) prevents massive early loss and resource waste.",
+                extra_images: [
+                    "field project/extra/pest_damage_example.png"
+                ] 
+            },
+            "veg-growth": {
+                title: "Vegetative Growth: Water and Nutrient Stress",
+                description: "Water stress during this rapid growth phase limits the plant's ability to produce pods later, wasting all preceding resources. Precision irrigation is key to maximizing resource use and preventing yield loss.",
+                extra_images: [
+                    "field project/extra/water_stress_soybean.png"
+                ]
+            },
+            "flowering": {
+                title: "Flowering & Pod Set: The Critical Yield Stage",
+                description: "This is the most sensitive stage. If conditions (excessive heat, drought, or nutrient deficiency) are poor here, flowers and young pods can abort (drop off), leading to near-total failure and wastage of months of effort.",
+                extra_images: [
+                    "field project/extra/pod_abortion.png"
+                ]
+            },
+            "ripening": {
+                title: "Ripening: Shattering and Pre-Harvest Loss",
+                description: "If harvest is delayed due to weather or scheduling issues, mature pods can dry excessively, shatter (split open), and fall to the ground. This leads to significant pre-harvest loss (wastage of the final product).",
+                extra_images: [
+                    "field project/extra/pod_shattering.png"
+                ]
+            },
+            "harvest": {
+                title: "Harvesting: Mechanical Inefficiency",
+                description: "Up to 5-10% of the crop can be lost due to inefficient or poorly calibrated machinery. Losses happen when cutters miss low-lying pods or when the machine cracks or throws out beans. Proper machine setup is vital to collecting every bean grown.",
+                extra_images: [
+                    "field project/extra/combine_loss.png"
+                ]
+            },
+            "post-harvest": {
+                title: "Post-Harvest: Cleaning and Storage Loss",
+                description: "Mishandling, poor storage, and insufficient drying after harvest can lead to moisture-related issues like mold and spoilage, rendering large volumes of product unfit for consumption and transport.",
+                extra_images: [
+                    "field project/extra/storage_mold.png"
+                ]
+            },
+        };
+        // ----------------- END STAGE DETAILS OBJECT -----------------
+        
+        var modal = document.getElementById("imageModal");
+        var modalContentArea = document.getElementById("modalContentArea"); 
+        var closeBtn = document.getElementsByClassName("close-btn")[0];
+
+        var galleryCards = document.querySelectorAll(".gallery .card");
+
+        galleryCards.forEach(function(card) {
+            card.onclick = function() {
+                var stageKey = this.getAttribute('data-stage'); 
+                var detail = stageDetails[stageKey]; 
+
+                if (detail) {
+                    // 1. Start building the new content HTML
+                    let contentHTML = `
+                        <h3>${detail.title}</h3>
+                        <p>${detail.description}</p>
+                    `;
+
+                    // 2. Add the extra image gallery if images exist
+                    if (detail.extra_images && detail.extra_images.length > 0) {
+                        contentHTML += `
+                            <h4>Examples of Wastage/Prevention:</h4>
+                            <div class="modal-gallery">
+                        `;
+                        detail.extra_images.forEach(imgSrc => {
+                            let captionText = card.querySelector('.caption').innerText; 
+                            contentHTML += `<img src="${imgSrc}" alt="Detail for ${captionText}" onerror="this.src='https://via.placeholder.com/250x150?text=Placeholder+Image'">`;
+                        });
+                        contentHTML += `</div>`;
+                    }
+
+                    // 3. Insert the HTML into the modal content area
+                    modalContentArea.innerHTML = contentHTML;
+
+                    // 4. Display the modal
+                    modal.style.display = "block";
+                }
+            }
+        });
+
+        // Close logic for modal
+        closeBtn.onclick = function() { 
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    </body>
 </html>
